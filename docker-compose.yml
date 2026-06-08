@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: codeguardian_backend
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    networks:
+      - codeguardian_network
+
+  frontend:
+    build: .
+    container_name: codeguardian_frontend
+    command: streamlit run frontend/app.py --server.port=8501 --server.address=0.0.0.0
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    environment:
+      - API_BASE_URL=http://backend:8000/api
+    depends_on:
+      - backend
+    networks:
+      - codeguardian_network
+
+networks:
+  codeguardian_network:
+    driver: bridge

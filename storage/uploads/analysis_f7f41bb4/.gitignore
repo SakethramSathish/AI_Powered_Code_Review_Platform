@@ -1,0 +1,63 @@
+# 🧠 Adaptive AI Story Engine - Gitignore
+
+# Environments & Secret Credentials
+.env
+.env.local
+.env.*.local
+*.env
+secrets.py
+
+# Python Runtime & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+ENV/local/
+ENV/lib/
+
+# Local Game Data, Saves & Logs
+# (The engine automatically recreates these directories dynamically if they do not exist)
+data/saves/*.json
+data/logs/*.log
+data/saves/
+data/logs/
+
+# IDEs, Editors & OS Files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
